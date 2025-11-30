@@ -19,6 +19,7 @@ internal class PluginClasspath(private val classpath: Array<String>?) {
 
     fun serialize() = classpath?.mapNotNull { it ->
         val jar = File(it).takeIf { it.exists() } ?: return@mapNotNull null
+        val jarCity = jar.city
         val jarName = jar.name
         val jarHash = jar.sha256()
         "$jarName-$jarHash"
